@@ -1,5 +1,7 @@
 # Kayseri Mezarlık Verileri
 
+![Graph](kayseri-graph.png)
+
 Özellikle Ağustos ayı itibariyle Türkiye genelinde ve Kayseri ilinde hissedilir şekilde artış gösteren COVID-19 vaka ve vefat sayıları resmi rakamlarının resmi rakamlara yansımadığı şüphesiyle [Kayseri Mezarlık Bilgi Sistemi](https://cbs.kayseri.bel.tr/kayseri-mezarlik-bilgi-sistemi)'nden veriler 'scrape' edilerek çekilmiştir.
 
 Program, belirlenen gün kadar önceden (`DAYS_AGO` değişkeni) güncel tarihe kadar her güne ait rakamlar 2020, 2019 ve 2018 yıllarını yansıtacak şekilde `kayseri-data.csv` dosyasına çıkartır. Her bir tarihe ait web sayfası görüntülerini `pdfs/` ve `screenshots/` klasörlerine kaydeder. Repo'da yalnızca pdfler bulunmaktadır.
