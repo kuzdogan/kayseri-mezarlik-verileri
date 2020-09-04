@@ -7,7 +7,7 @@ const csvStream = csv.format({ headers: true });
 const fsWriteStream = fs.createWriteStream('kayseri-data.csv');
 
 const URL = 'https://cbs.kayseri.bel.tr/kayseri-mezarlik-bilgi-sistemi';
-const DAYS_AGO = 5; // Number of days to go back.
+const DAYS_AGO = 3; // Number of days to go back.
 const CITY_NAME = 'Kayseri';
 
 // Main func
