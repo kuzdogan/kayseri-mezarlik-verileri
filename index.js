@@ -3,12 +3,17 @@ const fs = require('fs');
 const moment = require('moment');
 const csv = require('fast-csv');
 
-const csvStream = csv.format({ headers: true });
-const fsWriteStream = fs.createWriteStream('kayseri-data.csv');
-
 const URL = 'https://cbs.kayseri.bel.tr/kayseri-mezarlik-bilgi-sistemi';
-const DAYS_AGO = 3; // Number of days to go back.
+const DAYS_AGO = 4; // Number of days to go back.
 const CITY_NAME = 'Kayseri';
+const FILE_NAME = 'kayseri-data.csv';
+
+const csvStream = csv.format({
+  headers: fs.existsSync(FILE_NAME) ? false : true,
+  includeEndRowDelimiter: true
+});
+const fsWriteStream = fs.createWriteStream(FILE_NAME, { flags: 'a' }); // append flag.
+
 
 // Main func
 (async () => {
@@ -35,9 +40,8 @@ const CITY_NAME = 'Kayseri';
   });
   csvStream.pipe(fsWriteStream).on('end', () => process.exit());
 
-  // Iterate back over days
-  for (i = 0; i < DAYS_AGO; i++) { // Most recent date first
-    date.add(1, 'days'); // Go one day forward.
+  // Iterate over days from the first day.
+  for (i = 0; i < DAYS_AGO; i++) { // Exclude today.
     let date2020Str = date.format('DD.MM.YYYY');
     let date2020Filename = date.format('YYYY-MM-DD');
     await changeDateAndSearch(page, date2020Str);
@@ -71,6 +75,8 @@ const CITY_NAME = 'Kayseri';
     console.log('\tTarih: ', date2018Str);
     console.log('\tVefat sayisi: ', count2018);
     csvStream.write({ Tarih: date.format('DD.MM'), VefatSayisi2020: count2020, VefatSayisi2019: count2019, VefatSayisi2018: count2018 });
+
+    date.add(1, 'days'); // Go one day forward. At the end to exclude today.
   }
   csvStream.end();
   await browser.close();
