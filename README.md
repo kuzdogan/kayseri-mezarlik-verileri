@@ -1,6 +1,6 @@
 # Kayseri Mezarlık Verileri
 
-![Graph](kayseri-graph.png)
+![Graph](Kayseri.png)
 
 Özellikle Ağustos ayı itibariyle Türkiye genelinde ve Kayseri ilinde hissedilir şekilde artış gösteren COVID-19 vaka ve vefat sayıları resmi rakamlarının resmi rakamlara yansımadığı şüphesiyle [Kayseri Mezarlık Bilgi Sistemi](https://cbs.kayseri.bel.tr/kayseri-mezarlik-bilgi-sistemi)'nden veriler 'scrape' edilerek çekilmiştir.
 
