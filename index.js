@@ -4,7 +4,7 @@ const moment = require('moment');
 const csv = require('fast-csv');
 
 const URL = 'https://cbs.kayseri.bel.tr/kayseri-mezarlik-bilgi-sistemi';
-const DAYS_AGO = 36; // Number of days to go back.
+const DAYS_AGO = 9; // Number of days to go back.
 const CITY_NAME = 'Kayseri';
 const FILE_NAME = 'kayseri-data.csv';
 
@@ -74,7 +74,7 @@ const fsWriteStream = fs.createWriteStream(FILE_NAME, { flags: 'a' }); // append
     console.log('\tVefat sayisi: ', count2019);
     console.log('\tTarih: ', date2018Str);
     console.log('\tVefat sayisi: ', count2018);
-    csvStream.write({ Tarih: date.format('DD.MM'), VefatSayisi2020: count2020, VefatSayisi2019: count2019, VefatSayisi2018: count2018 });
+    csvStream.write({ Tarih: date.format('DD.MM.YYYY'), VefatSayisi2020: count2020, VefatSayisi2019: count2019, VefatSayisi2018: count2018 });
 
     date.add(1, 'days'); // Go one day forward. At the end to exclude today.
   }
