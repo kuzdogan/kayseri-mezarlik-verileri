@@ -4,7 +4,7 @@ const moment = require('moment');
 const csv = require('fast-csv');
 
 const URL = 'https://cbs.kayseri.bel.tr/kayseri-mezarlik-bilgi-sistemi';
-const DAYS_AGO = 9; // Number of days to go back.
+const DAYS_AGO = 18; // Number of days to go back.
 const CITY_NAME = 'Kayseri';
 const FILE_NAME = 'kayseri-data.csv';
 
