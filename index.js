@@ -4,7 +4,7 @@ const moment = require("moment");
 const csv = require("fast-csv");
 
 const URL = "https://cbs.kayseri.bel.tr/kayseri-mezarlik-bilgi-sistemi";
-const DAYS_AGO = 21; // Number of days to go back.
+const DAYS_AGO = 88; // Number of days to go back.
 const CITY_NAME = "Kayseri";
 const FILE_NAME = "kayseri-data.csv";
 
@@ -48,7 +48,7 @@ const fsWriteStream = fs.createWriteStream(FILE_NAME, { flags: "a" }); // append
     let date2020Filename = date.format("YYYY-MM-DD");
     await changeDateAndSearch(page, date2020Str);
     let count2020 = await countElements(page);
-    await scrollToTopAndScreenshot(page, date2020Filename, CITY_NAME);
+    // await scrollToTopAndScreenshot(page, date2020Filename, CITY_NAME);
     await savePagePDF(page, date2020Filename, CITY_NAME);
 
     // 2019 data
@@ -57,7 +57,7 @@ const fsWriteStream = fs.createWriteStream(FILE_NAME, { flags: "a" }); // append
     let date2019Filename = date2019.format("YYYY-MM-DD");
     await changeDateAndSearch(page, date2019Str);
     let count2019 = await countElements(page);
-    await scrollToTopAndScreenshot(page, date2019Filename, CITY_NAME);
+    // await scrollToTopAndScreenshot(page, date2019Filename, CITY_NAME);
     await savePagePDF(page, date2019Filename, CITY_NAME);
 
     // 2018 data
@@ -66,7 +66,7 @@ const fsWriteStream = fs.createWriteStream(FILE_NAME, { flags: "a" }); // append
     let date2018Filename = date2018.format("YYYY-MM-DD");
     await changeDateAndSearch(page, date2018Str);
     let count2018 = await countElements(page);
-    await scrollToTopAndScreenshot(page, date2018Filename, CITY_NAME);
+    // await scrollToTopAndScreenshot(page, date2018Filename, CITY_NAME);
     await savePagePDF(page, date2018Filename, CITY_NAME);
 
     console.log("==========================");
